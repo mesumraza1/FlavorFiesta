@@ -1,4 +1,4 @@
-**Recipe Website that allows users to browse, search, and view recipes.** The primary goal of the website is to provide a user-friendly platform for users to explore and discover new recipes, as well as to manage.
+###**Recipe Website that allows users to browse, search, and view recipes.**### The primary goal of the website is to provide a user-friendly platform for users to explore and discover new recipes, as well as to manage.
 
 
 ![recipe_addrecipedataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/69b164ff-f7a2-40f1-a338-aa87098f5b2e)
