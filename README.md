@@ -1,11 +1,12 @@
 **Recipe Website that allows users to browse, search, and view recipes.** The primary goal of the website is to provide a user-friendly platform for users to explore and discover new recipes, as well as to manage.
 
 
-![recipe_addrecipedataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/69b164ff-f7a2-40f1-a338-aa87098f5b2e)
+![recipe_addrecipedataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/84f00dfc-2653-4aa5-b81d-c70468eb78fc)
 
-![recipe_dataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/eecb6160-380a-4b37-b8a8-cd803626e6e0)
+![recipe_dataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/94b3fd04-d82f-433a-922e-be6c6d5e7c27)
 
-![recipe_signupdataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/b5bb0b1c-1939-4eb2-87f7-c284b4d8d69e)
+![recipe_signupdataflowdiagram](https://github.com/mesumraza1/FlavorFiesta/assets/84703789/81571397-c3ff-4ff3-829d-2e537d3068ab)
+
 
 
 The recipe website is a web-based application that is designed to provide users with a comprehensive database of recipes along with detailed instructions and ingredient lists. The purpose of the software is to enable users to easily search for and access a wide variety of recipes from various categories, and to help them learn how to prepare these dishes through step-by-step instructions. The website provides numerous benefits for users, including the ability to discover new and exciting recipes. In addition, the website can help users improve their culinary skills and build their confidence in the kitchen. The website is directly related to corporate goals and business strategies by promoting a healthy and sustainable lifestyle, encouraging users to cook at home rather than relying on takeout or processed foods. The website also supports the growth of a community of passionate and engaged home cooks, which can help drive traffic and increase engagement with the platform.
