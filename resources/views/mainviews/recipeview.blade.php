@@ -13,8 +13,22 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+        <style>
+          .tacos-image {
+              width: 500px;
+          }
+          .ingredient-border {
+              border: 1px solid #e2e8f0;
+              padding: 1rem;
+          }
+          .method-border {
+              border: 1px solid #e2e8f0;
+              padding: 1rem;
+          }
+      </style>
                 {{-- Favourite --}}
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -97,7 +111,10 @@
       <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
           
         <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400" href="#">Home</a>
-                @can('admin')
+        @foreach ( $categories as $category )
+                <a href="{{ route('categorydetails', ['id' => $category->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">{{$category->name}}</a>
+                @endforeach    
+            @can('admin')
                 <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">Admin</a>
                 @endcan
                 <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">About Us</a>
@@ -215,85 +232,60 @@
           
     </nav>
   </div>
-      {{-- main content --}}
-   
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Food-Recipes</title>
-          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-          <style>
-            .tacos-image {
-                width: 500px;
-            }
-            .ingredient-border {
-                border: 1px solid #e2e8f0;
-                padding: 1rem;
-            }
-            .method-border {
-                border: 1px solid #e2e8f0;
-                padding: 1rem;
-            }
-        </style>
-      </head>
-      <body class="bg-gray-100">
-          <div class="container mx-auto px-4 py-8 text-center">
-              <div class="flex justify-center  mb-8">
-                  <h1 class="text-4xl font-bold text-orange-500">
-                    {{$recipe->title}}
-                  </h1>
-                
-              </div>
-              <div class="inline-flex justify-center">
-                <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; height:100%; max-width: 700px; margin-bottom: 16px;">              </div>
-              <div class="mt-8">
-                  <div class="flex justify-center mx-4">
-                      <div class="bg-blue-200 p-4 rounded-lg">
-                          <h2 class="text-lg font-semibold text-blue-800">
-                              <i class="fas fa-clock"></i> Cook Time
-                          </h2>
-                          <p>{{$recipe->cook_time}}</p>
-                      </div>
-                      <div class="bg-yellow-200 p-4 rounded-lg mx-4">
-                          <h2 class="text-lg font-semibold text-yellow-800">
-                              <i class="fas fa-stopwatch"></i> Prep Time
-                          </h2>
-                          <p>{{$recipe->Prep_time}}</p>
-                      </div>
-                      <div class="bg-green-200 p-4 rounded-lg mx-4">
-                          <h2 class="text-lg font-semibold text-green-800">
-                              <i class="fas fa-hourglass-end"></i> Total Time
-                          </h2>
-                          <p>{{$recipe->total_time}}</p>
-                      </div>
-                      <div class="bg-red-200 p-4 rounded-lg">
-                          <h2 class="text-lg font-semibold text-red-800">
-                              <i class="fas fa-utensils"></i> Servings
-                          </h2>
-                          <p>{{$recipe->servings}}</p>
-                      </div>
-                  </div>
-              </div>
+      {{-- main content --}}          
       
-              <h2 class="text-4xl font-bold text-orange-500 mt-8">Ingredients:</h2>
-              <ul class="mt-4 ingredient-border p-4">
-                @foreach ($recipe->ingredients as $ingredient)
-                  <li>{{ $ingredient->name }} : {{ $ingredient->pivot->quantity }}</li>
-                  @endforeach
-              </ul>
-              <h2 class="text-4xl font-bold text-orange-500 mt-8">Instruction:</h2>
-              <ol class="list-decimal mt-4 method-border p-4">
-                  <li class="mb-2">
-                    {{$recipe->Instructions}}
-                  </li>
-                  
-              </ol>
-          </div>
-      </body>
-      </html>
+     <div class="container mx-auto px-4 py-8 text-center">
+  <div class="flex justify-center mb-8">
+    <h1 class="text-4xl font-bold text-orange-500">
+      {{$recipe->title}}
+    </h1>
+  </div>
+  <div class="inline-flex justify-center">
+    <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; height:100%; max-width: 700px; margin-bottom: 16px;">
+  </div>
+  <div class="mt-8">
+    <div class="flex flex-wrap justify-center mx-4">
+      <div class="bg-blue-200 p-4 rounded-lg mb-4 sm:mr-4">
+        <h2 class="text-lg font-semibold text-blue-800">
+          <i class="fas fa-clock"></i> Cook Time
+        </h2>
+        <p>{{$recipe->cook_time}}</p>
+      </div>
+      <div class="bg-yellow-200 p-4 rounded-lg mb-4 sm:mr-4">
+        <h2 class="text-lg font-semibold text-yellow-800">
+          <i class="fas fa-stopwatch"></i> Prep Time
+        </h2>
+        <p>{{$recipe->Prep_time}}</p>
+      </div>
+      <div class="bg-green-200 p-4 rounded-lg mb-4 sm:mr-4">
+        <h2 class="text-lg font-semibold text-green-800">
+          <i class="fas fa-hourglass-end"></i> Total Time
+        </h2>
+        <p>{{$recipe->total_time}}</p>
+      </div>
+      <div class="bg-red-200 p-4 rounded-lg mb-4 sm:w-auto">
+        <h2 class="text-lg font-semibold text-red-800">
+          <i class="fas fa-utensils"></i> Servings
+        </h2>
+        <p>{{$recipe->servings}}</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-4xl font-bold text-orange-500 mt-8">Ingredients:</h2>
+  <ul class="mt-4 ingredient-border p-4">
+    @foreach ($recipe->ingredients as $ingredient)
+    <li>{{ $ingredient->name }} : {{ $ingredient->pivot->quantity }}</li>
+    @endforeach
+  </ul>
+  <h2 class="text-4xl font-bold text-orange-500 mt-8">Instruction:</h2>
+  <ol class="list-decimal mt-4 method-border p-4">
+    <li class="mb-2">
+      {{$recipe->Instructions}}
+    </li>
+  </ol>
+</div>
+ 
         
         {{-- footer --}}
 <footer class="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 mt-auto" >

@@ -43,10 +43,10 @@ class FrontendController extends Controller
 
 
     public function viewrecipe($id){
-
+        $categories = categories::all();
         $recipe = recipes::with('ingredients', 'category')->findorfail($id);
 
-        return view('mainviews.recipeview',compact('recipe'));
+        return view('mainviews.recipeview',compact('recipe','categories'));
     }
 
     public function viewcategory(Request $request, $id)
