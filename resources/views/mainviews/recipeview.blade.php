@@ -279,11 +279,11 @@
     @endforeach
   </ul>
   <h2 class="text-4xl font-bold text-orange-500 mt-8">Instruction:</h2>
-  <ol class="list-decimal mt-4 method-border p-4">
+  <div class="list-decimal mt-4 method-border p-4">
     <li class="mb-2">
       {{$recipe->Instructions}}
     </li>
-  </ol>
+  </div>
 </div>
  
         
