@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
     <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
         <style>
@@ -182,41 +183,63 @@
             </div>
           </div>
           
+          <div class="flex justify-end mr-4">
+            <form class="flex items-center" id="searchForm">
+              <label for="searchInput" class="sr-only">Search</label>
+              <div class="relative mt-5">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <input type="text" id="searchInput" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search" required>
+              </div>
+              <button type="submit" class="p-2.5 ml-2 mt-5 text-sm font-medium text-white rounded-lg border bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <span class="sr-only">Search</span>
+              </button>
+            </form>
+          </div>
+          
+
           <!-- End Main Hero Content -->
           <section class="mt-8 bg-white">
             <div class="mt-4 text-center">
               <h3 id="our-menu" class="text-3xl font-bold mb-2" >Our Recipes </h3>
             </div>
             
-            <div class="container w-full px-5 py-6 mx-auto ">
-              <div class="grid lg:grid-cols-4 gap-y-6">
-                @foreach($recipes as $recipe)
-                <div class="max-w-xs mx-4 mb-2 rounded-lg hover:shadow-lg">
-                  <a href="{{ route('recipedetails.index', ['id' => $recipe->id]) }}">
-                    <img class="w-full h-48" src="{{ asset('cover/' . $recipe->cover) }}" alt="Image" />
-                    <div class="px-6 py-4">
-                      <div class="flex mb-2">
-                        <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">
-                          @foreach ($recipe->category as $category)
-                          {{ $category->name }}
-                          @endforeach
-                        </span>
+            <div class="container w-full px-5 py-6 mx-auto">
+              <div class="grid lg:grid-cols-4 gap-y-6" id="results">
+                @if(isset($recipes) && count($recipes) > 0)
+                      @foreach($recipes as $recipe)
+                      <div class="max-w-xs mx-4 mb-2 rounded-lg hover:shadow-lg">
+                          <a href="{{ route('recipedetails.index', ['id' => $recipe->id]) }}">
+                              <img class="w-full h-48" src="{{ asset('cover/' . $recipe->cover) }}" alt="Image" />
+                              <div class="px-6 py-4">
+                                  <div class="flex mb-2">
+                                      <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">
+                                          @foreach ($recipe->category as $category)
+                                          {{ $category->name }}
+                                          @endforeach
+                                      </span>
+                                  </div>
+                                  <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase">{{$recipe->title}}</h4>
+                                  <p class="leading-normal text-gray-700">{{$recipe->Description}}</p>
+                              </div>
+                              <div class="flex items-center justify-between p-4">
+                              </div>
+                          </a>
                       </div>
-                      <h4 class="mb-3 text-xl font-semibold tracking-tight text-orange-600 uppercase">{{$recipe->title}}</h4>
-                     
-                      <p class="leading-normal text-gray-700">{{$recipe->Description}}</p>
-                    </div>
-                    <div class="flex items-center justify-between p-4">
-                
-                    </div>
-                  </a>
-                </div>
-                
-                
-                
-                @endforeach
+                      @endforeach
+                  @else
+                      <div class="text-center">
+                          <p>No results found.</p>
+                      </div>
+                  @endif
               </div>
-            </div>  
+          </div>
             
             {{ $recipes->links() }}
               
@@ -224,7 +247,6 @@
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">
                 <ul class="flex items-center space-x-4 text-white">
-                  <li style="border-bottom: 1px solid white "> <a href="{{ route('categorydetails', ['id' => $category->id]) }}"> Home</a> </li>
                   <li style="border-bottom: 1px solid white "> <a href="{{ route('aboutus.index') }}"> About</a> </li>
                   <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
                   <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
@@ -264,7 +286,24 @@
             </div>
           </footer>
 
-
+          <script>
+            $(document).ready(function() {
+                $('#searchInput').keyup(function() {
+                    var searchTerm = $(this).val();
+        
+                    $.ajax({
+                        url: "{{ route('welcome.index') }}",
+                        type: 'GET',
+                        data: {term: searchTerm},
+                        dataType: 'html',
+                        success: function(response) {
+                            var $response = $(response).find('#results').html();
+                            $('#results').html($response);
+                        }
+                    });
+                });
+            });
+        </script>
 
     </body>
 </html>

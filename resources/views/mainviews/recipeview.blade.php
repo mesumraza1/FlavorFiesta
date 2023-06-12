@@ -217,27 +217,85 @@
   </div>
       {{-- main content --}}
    
-        
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Food-Recipes</title>
+          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+          <style>
+            .tacos-image {
+                width: 500px;
+            }
+            .ingredient-border {
+                border: 1px solid #e2e8f0;
+                padding: 1rem;
+            }
+            .method-border {
+                border: 1px solid #e2e8f0;
+                padding: 1rem;
+            }
+        </style>
+      </head>
+      <body class="bg-gray-100">
+          <div class="container mx-auto px-4 py-8 text-center">
+              <div class="flex justify-center  mb-8">
+                  <h1 class="text-4xl font-bold text-orange-500">
+                    {{$recipe->title}}
+                  </h1>
+                
+              </div>
+              <div class="inline-flex justify-center">
+                <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; height:100%; max-width: 700px; margin-bottom: 16px;">              </div>
+              <div class="mt-8">
+                  <div class="flex justify-center mx-4">
+                      <div class="bg-blue-200 p-4 rounded-lg">
+                          <h2 class="text-lg font-semibold text-blue-800">
+                              <i class="fas fa-clock"></i> Cook Time
+                          </h2>
+                          <p>{{$recipe->cook_time}}</p>
+                      </div>
+                      <div class="bg-yellow-200 p-4 rounded-lg mx-4">
+                          <h2 class="text-lg font-semibold text-yellow-800">
+                              <i class="fas fa-stopwatch"></i> Prep Time
+                          </h2>
+                          <p>{{$recipe->Prep_time}}</p>
+                      </div>
+                      <div class="bg-green-200 p-4 rounded-lg mx-4">
+                          <h2 class="text-lg font-semibold text-green-800">
+                              <i class="fas fa-hourglass-end"></i> Total Time
+                          </h2>
+                          <p>{{$recipe->total_time}}</p>
+                      </div>
+                      <div class="bg-red-200 p-4 rounded-lg">
+                          <h2 class="text-lg font-semibold text-red-800">
+                              <i class="fas fa-utensils"></i> Servings
+                          </h2>
+                          <p>{{$recipe->servings}}</p>
+                      </div>
+                  </div>
+              </div>
       
-<div class="recipe" style="display: flex; flex-direction: column; align-items: center;">
-  <h1 class="recipe-title" style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>{{$recipe->title}}</b></h1>
-  <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; height:100%; max-width: 700px; margin-bottom: 16px;">
-  <button class="favoriteButton bg-orange-500 hover:bg-red-600 py-2 px-4 rounded-md" data-recipe-id="{{$recipe->id}}">Add to Favorites</button>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <div class="recipe-section" style="text-align: center;">
-    <h2 style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>Ingredients:</b></h2>
-    <ul style="list-style-type: number; padding-left: 10px;">
-      @foreach ($recipe->ingredients as $ingredient)
-      <li style="margin-bottom: 8px; margin-left:">{{ $ingredient->name }} - Quantity: {{ $ingredient->pivot->quantity }}</li></p>
-@endforeach
-    </ul>
-   
-  </div>
-  <div class="recipe-section" style="text-align: center;">
-    <h2 style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>How to make:</b></h2>
-   <p class="mb-6 ml-16 mr-16" > {{$recipe->Instructions}}<b> </p>
-  </div>
-</div>
+              <h2 class="text-4xl font-bold text-orange-500 mt-8">Ingredients:</h2>
+              <ul class="mt-4 ingredient-border p-4">
+                @foreach ($recipe->ingredients as $ingredient)
+                  <li>{{ $ingredient->name }} : {{ $ingredient->pivot->quantity }}</li>
+                  @endforeach
+              </ul>
+              <h2 class="text-4xl font-bold text-orange-500 mt-8">Instruction:</h2>
+              <ol class="list-decimal mt-4 method-border p-4">
+                  <li class="mb-2">
+                    {{$recipe->Instructions}}
+                  </li>
+                  
+              </ol>
+          </div>
+      </body>
+      </html>
+        
+        {{-- footer --}}
 <footer class="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 mt-auto" >
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">

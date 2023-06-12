@@ -10,6 +10,7 @@ use App\Models\instructions;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -24,12 +25,22 @@ class UserController extends Controller
     }
     public function register(Request $request){
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'role' => 'required',
+            'password' => 'required|min:8',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
         $user = new User;
-        $user->name=$request['name'];
-        $user->email=$request['email'];
-        $user->role_id=$request['role'];
-
-        $user->password=md5($request['password']);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role_id = $request->input('role');
+        $user->password = md5($request->input('password'));
         $user->save();
         return redirect('/usertable');
 
@@ -65,8 +76,19 @@ class UserController extends Controller
     }
     public function update($id,Request $request){
         $user=User::find($id);
-        $user->name=$request['name'];
-        $user->email=$request['email'];
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|numeric|between:0,1',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->role_id = $request['role'];
         $user->save();
         return redirect('/usertable');
     }

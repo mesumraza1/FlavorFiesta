@@ -178,7 +178,10 @@
                     <div class="relative">
                         <input type="text" id="title" name="title" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('title', $recipes->title) }}" />
                         <label for="title" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Title</label>
-                    </div>
+                    </div>  
+                    @error('title')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="mb-4">
@@ -186,13 +189,19 @@
                         <textarea id="description" name="description" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('description', $recipes->Description) }}</textarea>
                         <label for="description" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Description</label>
                     </div>
+                    @error('description')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
                     <div class="relative">
                         <textarea id="Instructions" name="Instructions" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-600 appearance-none dark:text-white dark:border-violet-500 dark:focus:border-violet-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('Instructions', $recipes->Instructions) }}</textarea>
                         <label for="Instructions" class="absolute text-sm text-orange-500 dark:text-orange-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Instructions</label>
-                    </div>
+                    </div>  
+                    @error('Instructions')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="mb-4">
@@ -200,6 +209,9 @@
                         <textarea id="Prep_time" name="Prep_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('Prep_time', $recipes->Prep_time) }}</textarea>
                         <label for="Prep_time" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Prep Time</label>
                     </div>
+                    @error('Prep_time')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="mb-4">
@@ -207,6 +219,9 @@
                         <textarea id="cook_time" name="cook_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('cook_time', $recipes->cook_time) }}</textarea>
                         <label for="cook_time" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Cook Time</label>
                     </div>
+                    @error('cook_time')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="mb-4">
@@ -214,19 +229,30 @@
                         <textarea id="servings" name="servings" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('servings', $recipes->servings) }}</textarea>
                         <label for="servings" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Servings</label>
                     </div>
+                    @error('servings')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <label for="Category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
                 <select id="Category_id" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ in_array($category->id, old('category', $recipes->category->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $category->name }}</option>
+                        @php
+                            $selectedCategories = old('category', $recipes->category->pluck('id')->toArray());
+                            $selectedCategories = is_array($selectedCategories) ? $selectedCategories : [$selectedCategories];
+                        @endphp
+                        <option value="{{ $category->id }}" {{ in_array($category->id, $selectedCategories) ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
                 
+                
                 <div class="mb-4">
                     <label for="images" class="block">Images:</label>
-                    <input type="file" id="cover" name="cover" multiple accept="image/*" required class="w-full">
-                </div>
+                    <input type="file" id="cover" name="cover" multiple accept="image/*"  class="w-full">
+                </div> 
+                @error('cover')
+                <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
                 </div>
                 
                 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
@@ -240,8 +266,8 @@
                         </div>
                         <div class="flex items-center mb-4">
                             <div class="relative">
-    <input type="text" data-id="{{$ingredient->id}}" id="Quantity" name="ingredients[{{$ingredient->id}}]" required class="block rounded-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 bg-transparent  border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 w-full ingredient-amount" placeholder=" " disabled value="{{ old('ingredients.' . $ingredient->id, $recipes->ingredients->where('id', $ingredient->id)->first()->pivot->quantity ?? '') }}" {{ in_array($ingredient->id, old('ingredients', $recipes->ingredients->pluck('id')->toArray())) ? '' : 'disabled' }}>
-    <label for="Quantity" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Amount</label>
+    <input type="text" data-id="{{$ingredient->id}}" id="Quantity" name="ingredients[{{$ingredient->id}}]" required class="block rounded-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 bg-transparent  border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 w-full ingredient-amount" placeholder=" " disabled value="{{ old('ingredients.' . $ingredient->id, $recipes->ingredients->where('id', $ingredient->id)->first()->pivot->quantity ?? '') }}" {{ in_array($ingredient->id, old('ingredients', $recipes->ingredients->pluck('id')->toArray())) ? '' : 'disabled' }}>
+    <label for="Quantity" class="absolute text-sm text-oragborder-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Amount</label>
 </div>
 
                         </div>

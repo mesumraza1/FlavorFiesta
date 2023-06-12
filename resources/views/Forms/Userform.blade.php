@@ -162,24 +162,48 @@
         <h1 class="text-center">{{$title}}</h1>
         <div class="form-group">
        
-       <div class="mb-3">
-           <label for="username" class="form-label">Username</label>
-           <input type="text" name="name" class="form-control" id="username" value="{{$user->name}}">
-       </div>
-         <div class="mb-3">
-           <label for="exampleInputEmail1" class="form-label">Email address</label>
-           <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->email}}" >
-           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-         </div>
-         <div class="mb-3">
-          <label for="username" class="form-label">Role</label>
-          <input type="text" name="role" class="form-control" id="username" value="{{$user->role_id}}">
-      </div>
-         <div class="mb-3">
-           <label for="exampleInputPassword1" class="form-label">Password</label>
-           <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-         </div>
-         
+
+       <div class="mb-4">
+        <div class="relative">
+            <input type="text" id="title" name="name" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm  bg-transparent rounded-lg border-1 border-orange-500 text-gray-900 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('name', $user->name) }}" />
+            <label for="username" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Username</label>
+        </div>
+        @error('name')
+        <span class="text-red-500 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
+
+
+         <div class="mb-4">
+            <div class="relative">
+                <input type="email" id="Email" name="email" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm  bg-transparent rounded-lg border-1 border-orange-500 text-gray-900 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('email', $user->email) }}" />
+                <label for="email" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Email</label>
+            </div>
+            @error('email')
+            <span class="text-red-500 text-xs">{{ $message }}</span>
+            @enderror
+        </div>
+        
+      <div class="mb-4">
+        <div class="relative">
+            <input type="text" id="role" name="role" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm  bg-transparent rounded-lg border-1 border-orange-500 text-gray-900 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('role', $user->role_id) }}" />
+            <label for="role" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Role</label>
+        </div>
+        @error('role')
+        <span class="text-red-500 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div class="mb-4">
+        <div class="relative">
+            <input type="password" id="password" name="password"  class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm  bg-transparent rounded-lg border-1 border-orange-500 text-gray-900 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('password', $user->password_id) }}" />
+            <label for="password" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Password</label>
+        </div>
+        @error('password')
+        <span class="text-red-500 text-xs">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="mb-4 mt-4">
          <button type="submit" class="btn btn-primary">Submit</button>
 
         </div>

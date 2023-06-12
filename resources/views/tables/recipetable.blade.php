@@ -1,7 +1,8 @@
 @extends('layouts.main')
 @section('main-container')
 <body>
-  <div class="relative overflow-x-auto ml-[16rem] mt-16">
+  <div class="container mx-auto">
+    <div class="relative overflow-x-auto mt-16 ml-0 sm:ml-64 md:ml-44 mr-4">
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="myTable">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>

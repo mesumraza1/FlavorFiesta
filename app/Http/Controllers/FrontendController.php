@@ -7,6 +7,7 @@ use App\Models\categories;
 use App\Models\instructions;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FrontendController extends Controller
 {
@@ -25,11 +26,21 @@ class FrontendController extends Controller
 
         return view('welcome',compact('recipes','categories'));
     }
-    public function dashboard(){
-        $categories=categories::all();
-        $recipes=recipes::with('category')->paginate(30);
-        return view('dashboard',compact('recipes','categories'));
+    public function dashboard(Request $request)
+{
+    $categories = categories::all();
+    $query = recipes::query()->with('category');
+
+    $searchTerm = $request->input('term');
+    if (!empty($searchTerm)) {
+        $query->where('title', 'like', '%' . $searchTerm . '%');
     }
+
+    $recipes = $query->paginate(30);
+
+    return view('dashboard', compact('recipes', 'categories'));
+}
+
 
     public function viewrecipe($id){
 
@@ -38,13 +49,22 @@ class FrontendController extends Controller
         return view('mainviews.recipeview',compact('recipe'));
     }
 
-    public function viewcategory($id){
-        $types=categories::all();
-        $category = categories::findOrFail($id);
-        $recipes = $category->recipe;
+    public function viewcategory(Request $request, $id)
+{
+    $types = categories::all();
+    $category = categories::findOrFail($id);
+    $query = $category->recipe();
 
-        return view('mainviews.categoryview',compact('recipes','category','types'));
+    $searchTerm = $request->input('term');
+    if (!empty($searchTerm)) {
+        $query->where('title', 'like', '%' . $searchTerm . '%');
     }
+
+    $recipes = $query->paginate(30);
+
+    return view('mainviews.categoryview', compact('recipes', 'category', 'types'));
+}
+
 
     
     public function aboutus(){

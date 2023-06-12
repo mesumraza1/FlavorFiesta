@@ -87,14 +87,7 @@
          
             
           
-          {{-- <div class="container">
-            <h1>Search Example</h1>
-            <form id="searchForm">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </form> --}}
+        
             
           
 

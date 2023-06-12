@@ -8,6 +8,7 @@ use App\Models\instructions;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 
 use Illuminate\Http\Request;
@@ -50,14 +51,15 @@ class RecipesController extends Controller
         
         
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:50',
             'description' => 'required',
             'Instructions' => 'required',
-            'Prep_time' => 'required',
-            'cook_time' => 'required',
-            'servings' => 'required',
+            'Prep_time' => 'required|numeric|min:1',
+            'cook_time' => 'required|numeric|min:1',
+            'servings' => 'required|numeric|min:1',
             'cover' => 'required|mimes:jpg,png|max:4048',
         ]);
+        
 
         $prepTime = $request->input('Prep_time');
         $cookTime = $request->input('cook_time');
@@ -128,15 +130,17 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:50',
             'description' => 'required',
             'Instructions' => 'required',
-            'Prep_time' => 'required',
-            'cook_time' => 'required',
-            'servings' => 'required',
+            'Prep_time' => 'required|numeric|min:1',
+            'cook_time' => 'required|numeric|min:1',
+            'servings' => 'required|numeric|min:1',
             'cover' => 'nullable|mimes:jpg,png|max:4048',
         ]);
+        
         
         $recipe = recipes::findOrFail($id);
         

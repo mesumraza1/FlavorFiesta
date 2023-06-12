@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Models\categories;
+use Illuminate\Support\Facades\Validator;
+
 
 class IngredientsController extends Controller
 {
@@ -24,10 +26,25 @@ class IngredientsController extends Controller
     }
     public function register(Request $request){
 
-        $ingredient = new ingredients;
-        $ingredient->name=$request['ingredient'];
-        $ingredient->save();
-        return redirect('/ingredienttable');
+        $ingredientArray = $request->input('ingredient');
+
+            $validator = Validator::make(
+                ['ingredient' => $ingredientArray],
+                ['ingredient.*' => 'required|max:255']
+            );
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            foreach ($ingredientArray as $ingredientName) {
+                $ingredient = new ingredients;
+                $ingredient->name = $ingredientName;
+                $ingredient->save();
+            }
+
+            return redirect('/ingredienttable');
+
 
     }
     public function view(){
@@ -49,28 +66,46 @@ class IngredientsController extends Controller
             return redirect()->back();
     }
 
-    public function edit($id){
-        $categories=categories::all();
-        if(Gate::denies('admin')){
+    public function edit($id)
+    {
+        $categories = categories::all();
+    
+        if (Gate::denies('admin')) {
             abort(403);
         }
-        $ingredient=ingredients::find($id);
-        if(is_null($ingredient)){
-                return redirect('ingredientview');
+    
+        $ingredient = ingredients::find($id);
+    
+        if (is_null($ingredient)) {
+            return redirect('ingredientview');
+        } else {
+            
+    
+            $url = url('/ingredient/update') . "/" . $id;
+            $title = "Update";
+    
+            return view('Forms.ingredientForm', compact('ingredient', 'url', 'title', 'categories'));
         }
-        else{
-            $url=url('/ingredient/update')."/".$id;
-            $title="Update";
-            $data=compact('ingredient','url','title');
-            return view('Forms.ingredientForm')->with($data);
+    }
 
-        }
-    }
+    
     public function update($id,Request $request){
-        $ingredient=ingredients::find($id);
-        $ingredient->name=$request['ingredient'];
-        
-        $ingredient->save();
-        return redirect('/ingredienttable');
+        $ingredient = ingredients::find($id);
+
+$validator = Validator::make(
+    $request->all(),
+    ['ingredient' => 'required|max:255']
+);
+
+if ($validator->fails()) {
+    return redirect()->back()->withErrors($validator)->withInput();
+}
+
+$ingredient->name = $request['ingredient'];
+$ingredient->save();
+
+return redirect('/ingredienttable');
+
     }
+
 }

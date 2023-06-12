@@ -163,11 +163,14 @@
 
                 <div class="mb-4">
                     <div class="relative">
-                        <input type="text" id="title" name="category" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" " value="{{ old('category', $category->name) }}" />
-                        <label for="title" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Category</label>
+                        <input type="text" id="title" name="category" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm  bg-transparent rounded-lg border-1 border-orange-500 text-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('category', $category->name) }}" />
+                        <label for="title" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Category</label>
                     </div>
+                    @error('category')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
-                <button type="submit" class="bg-violet-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                <button type="submit" class="bg-orange-500 text-white hover:bg-blue-700  font-bold py-2 px-4 rounded">Submit</button>
             </div>
         </form>
     </div>
