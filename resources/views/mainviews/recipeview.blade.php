@@ -75,7 +75,7 @@
     <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center" x-data="{ open: false }" wire:id="oYMiPnZp4Nzbmr9iAsGp">
         
       <div class="flex items-center justify-between">
-        <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+        <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 md:text-2xl hover:text-green-400"
           href="#">
           FlavorFiesta
         </a>
@@ -96,11 +96,11 @@
       
       <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
           
-        <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" href="#">Home</a>
+        <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400" href="#">Home</a>
                 @can('admin')
-                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">Admin</a>
+                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">Admin</a>
                 @endcan
-                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">About Us</a>
       </div>
       <div class="ml-3 relative">
         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -172,7 +172,7 @@
                     </button>
                   @else
                     <span class="inline-flex rounded-md">
-                      <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                      <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-orange-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                         {{ Auth::user()->name }}
                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -220,25 +220,67 @@
         
       
 <div class="recipe" style="display: flex; flex-direction: column; align-items: center;">
-  <h1 class="recipe-title" style="margin-bottom: 16px;"><b>{{$recipe->title}}</b></h1>
-  <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; max-width: 400px; margin-bottom: 16px;">
-  <button class="favoriteButton" data-recipe-id="{{$recipe->id}}">Add to Favorites</button>
-                  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <h1 class="recipe-title" style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>{{$recipe->title}}</b></h1>
+  <img src="{{ asset('cover/' . $recipe->cover) }}" alt="Delicious Recipe" class="recipe-image" style="width: 100%; height:100%; max-width: 700px; margin-bottom: 16px;">
+  <button class="favoriteButton bg-orange-500 hover:bg-red-600 py-2 px-4 rounded-md" data-recipe-id="{{$recipe->id}}">Add to Favorites</button>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <div class="recipe-section" style="text-align: center;">
-    <h2 style="margin-bottom: 8px;"><b>Ingredients:</b></h2>
-    <ul style="list-style-type: none; padding-left: 0;">
+    <h2 style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>Ingredients:</b></h2>
+    <ul style="list-style-type: number; padding-left: 10px;">
       @foreach ($recipe->ingredients as $ingredient)
-      <li style="margin-bottom: 8px;">{{ $ingredient->name }} - Quantity: {{ $ingredient->pivot->quantity }}</li></p>
+      <li style="margin-bottom: 8px; margin-left:">{{ $ingredient->name }} - Quantity: {{ $ingredient->pivot->quantity }}</li></p>
 @endforeach
     </ul>
    
   </div>
   <div class="recipe-section" style="text-align: center;">
-    <h2 style="margin-bottom: 8px;"><b>How to make:</b></h2>
-   <p> {{$recipe->Instructions}} </p>
+    <h2 style="margin-bottom: 16px; font-size:30px; margin-top:20px;"><b>How to make:</b></h2>
+   <p class="mb-6 ml-16 mr-16" > {{$recipe->Instructions}}<b> </p>
   </div>
 </div>
-
+<footer class="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 mt-auto" >
+            <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
+              <div class="flex flex-wrap justify-center">
+                <ul class="flex items-center space-x-4 text-white">
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Home</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> About</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
+                </ul>
+              </div>
+              <div class="flex justify-center mt-4 lg:mt-0">
+                <a target=onblock href="https://www.facebook.com/">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-blue-600" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://twitter.com/" class="ml-3">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-blue-300" viewBox="0 0 24 24">
+                    <path
+                      d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                    </path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://www.instagram.com/" class="ml-3">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-pink-400" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://www.linkedin.com/" class="ml-3">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="0" class="w-6 h-6 text-blue-500" viewBox="0 0 24 24">
+                    <path stroke="none"
+                      d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </footer>
 
 </body>
 </html>

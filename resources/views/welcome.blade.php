@@ -20,12 +20,12 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
     </head>
-    <body class="antialiased">
+    <body class="antialiased flex flex-col min-h-screen">
 
         <div class="bg-white shadow-md" x-data="{ isOpen: false }">
             <nav class="container px-6  mx-auto md:flex md:justify-between md:items-center justify-start">
               <div class="flex items-center justify-between">
-                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-800 md:text-2xl hover:text-green-400"
                   href="#">
                   FlavorFiesta
                 </a>
@@ -45,12 +45,12 @@
               <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
               
               <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 ">
-                <a href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" href="#">Home</a>
+                <a href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400" href="#">Home</a>
 
                 @foreach ( $categories as $category )
-                <a href="{{ route('categorydetails', ['id' => $category->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">{{$category->name}}</a>
+                <a href="{{ route('categorydetails', ['id' => $category->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">{{$category->name}}</a>
                 @endforeach
-                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-400 to-red-800 hover:text-green-400">About Us</a>
                 
                 @if (Route::has('login'))
                 <div class=" sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -75,12 +75,11 @@
             class="container max-w-lg px-4 py-32 mx-auto text-left  bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
             style="background-image: url('{{ asset('6b652625-da54-452b-ac13-3149ad94f0ed.jpg') }}')">
             <h1
-              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-violet-600 md:text-center sm:leading-none lg:text-5xl">
+              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 md:text-center sm:leading-none lg:text-5xl">
               <span class="inline md:block">Welcome To FlavorFiesta Recipes</span>
             </h1>
             <div class="mx-auto mt-2  text-white md:text-center lg:text-lg">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta voluptatem ab necessitatibus illo praesentium
-              culpa excepturi quae commodi quaerat,
+              Want to eat something new but dont know what to eat? Well you are in the right place. Just suggest a name or search from some of our recommended recipes.
             </div>
             </div>
           </div>
@@ -88,7 +87,15 @@
          
             
           
-     
+          {{-- <div class="container">
+            <h1>Search Example</h1>
+            <form id="searchForm">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form> --}}
+            
           
 
             
@@ -103,7 +110,7 @@
                   </div>
                   <input type="text" id="searchInput" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search" required>
                 </div>
-                <button type="submit" class="p-2.5 ml-2 mt-5 text-sm font-medium text-white bg-violet-600 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <button type="submit" class="p-2.5 ml-2 mt-5 text-sm font-medium text-white rounded-lg border bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  focus:ring-4 focus:outline-none focus:ring-blue-300">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                   </svg>
@@ -116,66 +123,62 @@
 
 
             <div class="mt-4 text-center text-slate-700">
-              <h3 id="our-menu" class="text-3xl  font-extrabold">Our Menu</h3>
+              <h3 id="our-menu" class="text-3xl  font-extrabold">Our Recipes</h3>
               
             </div>
 
             
-            <div class="container w-full px-5 py-6 mx-auto">
-              <div class="grid lg:grid-cols-4 gap-y-6 justify-center md:place-items-center" id="results">
-                  @if(isset($recipes) && count($recipes) > 0)
-                      @foreach($recipes as $recipe)
-                      <div class="max-w-xs mx-4 mb-2 rounded-lg hover:shadow-lg">
-                          <a href="{{ route('recipedetails.index', ['id' => $recipe->id]) }}">
-                              <img loading="lazy" class="w-full h-48" src="{{ asset('cover/' . $recipe->cover) }}" alt="Image" />
-                              <div class="px-6 py-4">
-                                  <div class="flex mb-2">
-                                      <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">
-                                          @foreach ($recipe->category as $category)
-                                          {{ $category->name }}
-                                          @endforeach
-                                      </span>
-                                  </div>
-                                  <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase">{{$recipe->title}}</h4>
-                                  <p class="leading-normal text-gray-700">{{$recipe->Description}}</p>
-                              </div>
-                              <div class="flex items-center justify-between p-4">
-                              </div>
-                          </a>
-                      </div>
-                      @endforeach
-                  @else
-                      <div class="text-center">
-                          <p>No results found.</p>
-                      </div>
-                  @endif
-              </div>
-          </div>
-          <div class="flex justify-center mt-6">
-            <div class="mb-4">
-                {{ $recipes->links() }}
-            </div>
+      <div class="container w-full px-5 py-6 mx-auto">
+        <div class="grid lg:grid-cols-4 gap-y-6" id="results">
+          @if(isset($recipes) && count($recipes) > 0)
+                @foreach($recipes as $recipe)
+                <div class="max-w-xs mx-4 mb-2 rounded-lg hover:shadow-lg">
+                    <a href="{{ route('recipedetails.index', ['id' => $recipe->id]) }}">
+                        <img class="w-full h-48" src="{{ asset('cover/' . $recipe->cover) }}" alt="Image" />
+                        <div class="px-6 py-4">
+                            <div class="flex mb-2">
+                                <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">
+                                    @foreach ($recipe->category as $category)
+                                    {{ $category->name }}
+                                    @endforeach
+                                </span>
+                            </div>
+                            <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase">{{$recipe->title}}</h4>
+                            <p class="leading-normal text-gray-700">{{$recipe->Description}}</p>
+                        </div>
+                        <div class="flex items-center justify-between p-4">
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            @else
+                <div class="text-center">
+                    <p>No results found.</p>
+                </div>
+            @endif
         </div>
-        
+    </div>
+            {{ $recipes->links() }}
+      
        
-          <footer class="bg-gray-800 border-t border-gray-200">
+          <footer class=" mt-auto bg-gradient-to-r from-red-600 via-yellow-500 to-red-800 " >
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">
                 <ul class="flex items-center space-x-4 text-white">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                  <li>Terms</li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Home</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> About</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
                 </ul>
               </div>
               <div class="flex justify-center mt-4 lg:mt-0">
-                <a>
+                <a target=onblock href="https://www.facebook.com/">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-600" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://twitter.com/" class="ml-3">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-300" viewBox="0 0 24 24">
                     <path
@@ -183,14 +186,14 @@
                     </path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.instagram.com/" class="ml-3">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-pink-400" viewBox="0 0 24 24">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.linkedin.com/" class="ml-3">
                   <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="0" class="w-6 h-6 text-blue-500" viewBox="0 0 24 24">
                     <path stroke="none"

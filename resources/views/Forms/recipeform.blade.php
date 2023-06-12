@@ -16,7 +16,7 @@
         <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center " x-data="{ open: false }" wire:id="oYMiPnZp4Nzbmr9iAsGp">
             
           <div class="flex items-center justify-between">
-            <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+            <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 md:text-3xl hover:text-green-400"
               href="#">
               FlavorFiesta
             </a>
@@ -37,13 +37,13 @@
           
           <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
               
-              <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" href="#">Home</a>
+              <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400" href="#">Home</a>
               
               
               @can('admin')
-              <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">Admin</a>
+              <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">Admin</a>
               @endcan
-              <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+              <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">About Us</a>
           </div>
   
           <div class="ml-3 relative">
@@ -176,43 +176,43 @@
             <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="mb-4">
                     <div class="relative">
-                        <input type="text" id="title" name="title" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" " value="{{ old('title', $recipes->title) }}" />
-                        <label for="title" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Title</label>
+                        <input type="text" id="title" name="title" required class="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" " value="{{ old('title', $recipes->title) }}" />
+                        <label for="title" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Title</label>
                     </div>
                 </div>
                 
                 <div class="mb-4">
                     <div class="relative">
-                        <textarea id="description" name="description" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('description', $recipes->Description) }}</textarea>
-                        <label for="description" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Description</label>
+                        <textarea id="description" name="description" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('description', $recipes->Description) }}</textarea>
+                        <label for="description" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Description</label>
                     </div>
                 </div>
 
                 <div class="mb-4">
                     <div class="relative">
-                        <textarea id="Instructions" name="Instructions" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-violet-500 dark:focus:border-violet-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('Instructions', $recipes->Instructions) }}</textarea>
-                        <label for="Instructions" class="absolute text-sm text-violet-600 dark:text-violet-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Instructions</label>
+                        <textarea id="Instructions" name="Instructions" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-600 appearance-none dark:text-white dark:border-violet-500 dark:focus:border-violet-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('Instructions', $recipes->Instructions) }}</textarea>
+                        <label for="Instructions" class="absolute text-sm text-orange-500 dark:text-orange-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Instructions</label>
                     </div>
                 </div>
                 
                 <div class="mb-4">
                     <div class="relative">
-                        <textarea id="Prep_time" name="Prep_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('Prep_time', $recipes->Prep_time) }}</textarea>
-                        <label for="Prep_time" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Prep Time</label>
+                        <textarea id="Prep_time" name="Prep_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('Prep_time', $recipes->Prep_time) }}</textarea>
+                        <label for="Prep_time" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Prep Time</label>
                     </div>
                 </div>
                 
                 <div class="mb-4">
                     <div class="relative">
-                        <textarea id="cook_time" name="cook_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('cook_time', $recipes->cook_time) }}</textarea>
-                        <label for="cook_time" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Cook Time</label>
+                        <textarea id="cook_time" name="cook_time" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('cook_time', $recipes->cook_time) }}</textarea>
+                        <label for="cook_time" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Cook Time</label>
                     </div>
                 </div>
                 
                 <div class="mb-4">
                     <div class="relative">
-                        <textarea id="servings" name="servings" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-violet-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-violet-600 peer" placeholder=" ">{{ old('servings', $recipes->servings) }}</textarea>
-                        <label for="servings" class="absolute text-sm text-violet-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Servings</label>
+                        <textarea id="servings" name="servings" required class="block  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-orange-500 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-orange-500 peer" placeholder=" ">{{ old('servings', $recipes->servings) }}</textarea>
+                        <label for="servings" class="absolute text-sm text-orange-500 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Servings</label>
                     </div>
                 </div>
                 
@@ -251,7 +251,7 @@
            
         </div>
         {{-- {{ route('recipes.store') }} --}}
-        <button type="submit" class="px-4 py-2 mt-4 bg-violet-600 text-white rounded-lg">Add Recipe</button>
+        <button type="submit" class="px-5 py-2 mt-2 ml-4 mb-4 bg-orange-500 text-white rounded-lg">Add Recipe</button>
     </form>
     @if (session('success'))
         {{session('success')}}
@@ -281,5 +281,48 @@
     });
 </script>
       </div>
+      <footer class=" mt-auto bg-gradient-to-r from-red-600 via-yellow-500 to-red-800 " >
+            <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
+              <div class="flex flex-wrap justify-center">
+                <ul class="flex items-center space-x-4 text-white">
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Home</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> About</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
+                </ul>
+              </div>
+              <div class="flex justify-center mt-4 lg:mt-0">
+                <a target=onblock href="https://www.facebook.com/">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-blue-600" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://twitter.com/" class="ml-3">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-blue-300" viewBox="0 0 24 24">
+                    <path
+                      d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                    </path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://www.instagram.com/" class="ml-3">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-6 h-6 text-pink-400" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </a>
+                <a target=onblock href="https://www.linkedin.com/" class="ml-3">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="0" class="w-6 h-6 text-blue-500" viewBox="0 0 24 24">
+                    <path stroke="none"
+                      d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </footer>
 </body> 
 </html>

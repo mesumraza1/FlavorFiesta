@@ -26,7 +26,7 @@
             <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center" x-data="{ open: false }" wire:id="oYMiPnZp4Nzbmr9iAsGp">
                 
               <div class="flex items-center justify-between">
-                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 md:text-2xl hover:text-green-400"
                   href="#">
                   FlavorFiesta
                 </a>
@@ -47,15 +47,15 @@
               
               <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
                   
-                <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" >Home</a>
+                <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400" >Home</a>
                 @foreach ( $types as $type )
-                <a href="{{ route('categorydetails', ['id' => $type->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">{{$type->name}}</a>
+                <a href="{{ route('categorydetails', ['id' => $type->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">{{$type->name}}</a>
                 @endforeach
 
                 @can('admin')
-                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">Admin</a>
+                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">Admin</a>
                 @endcan
-                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 hover:text-green-400">About Us</a>
               </div>
 
               < <div class="ml-3 relative">
@@ -120,22 +120,21 @@
           </div>
           <!-- Main Hero Content -->
           <div
-            class="container max-w-lg px-4 py-32 mx-auto text-left bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
-            style="background-image: url('https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984_960_720.jpg')">
+            class="container max-w-lg px-4 py-32 mx-auto text-left  bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
+            style="background-image: url('{{ asset('6b652625-da54-452b-ac13-3149ad94f0ed.jpg') }}')">
             <h1
-              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-center sm:leading-none lg:text-5xl">
+              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 md:text-center sm:leading-none lg:text-5xl">
               <span class="inline md:block">Welcome To FlavorFiesta Recipes</span>
             </h1>
-            <div class="mx-auto mt-2 text-green-50 md:text-center lg:text-lg">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta voluptatem ab necessitatibus illo praesentium
-              culpa excepturi quae commodi quaerat,
+            <div class="mx-auto mt-2  text-white md:text-center lg:text-lg">
+              Want to eat something new but dont know what to eat? Well you are in the right place. Just suggest a name or search from some of our recommended recipes.
             </div>
             </div>
           </div>
           <!-- End Main Hero Content -->
           <section class="mt-8 bg-white">
             <div class="mt-4 text-center">
-              <h3 id="our-menu" class="text-2xl font-bold">Our Menu</h3>
+              <h3 id="our-menu" class="text-3xl font-bold" style="margin-bottom:20px">Our Recipes</h3>
               
             </div>
             
@@ -169,24 +168,24 @@
                 
 
               
-          <footer class="bg-gray-800 border-t border-gray-200">
+              <footer class="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 mt-auto" >
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">
                 <ul class="flex items-center space-x-4 text-white">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                  <li>Terms</li>
+                  <li style="border-bottom: 1px solid white "> <a href="{{ route('categorydetails', ['id' => $category->id]) }}"> Home</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="{{ route('aboutus.index') }}"> About</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
                 </ul>
               </div>
               <div class="flex justify-center mt-4 lg:mt-0">
-                <a>
+                <a target=onblock href="https://www.facebook.com/">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-600" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://twitter.com/" class="ml-3">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-300" viewBox="0 0 24 24">
                     <path
@@ -194,14 +193,14 @@
                     </path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.instagram.com/" class="ml-3">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-pink-400" viewBox="0 0 24 24">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.linkedin.com/" class="ml-3">
                   <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="0" class="w-6 h-6 text-blue-500" viewBox="0 0 24 24">
                     <path stroke="none"

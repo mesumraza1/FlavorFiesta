@@ -26,7 +26,7 @@
             <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center" x-data="{ open: false }" wire:id="oYMiPnZp4Nzbmr9iAsGp">
                 
               <div class="flex items-center justify-between">
-                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+                <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  md:text-2xl hover:text-green-400"
                   href="#">
                   FlavorFiesta
                 </a>
@@ -47,14 +47,14 @@
               
               <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
                   
-                <a href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" href="#">Home</a>
+                <a href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  hover:text-green-400" href="#">Home</a>
                 @foreach ( $categories as $category )
-                <a href="{{ route('categorydetails', ['id' => $category->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">{{$category->name}}</a>
+                <a href="{{ route('categorydetails', ['id' => $category->id]) }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  hover:text-green-400">{{$category->name}}</a>
                 @endforeach
                 @can('admin')
-                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">Admin</a>
+                <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  hover:text-green-400">Admin</a>
                 @endcan
-                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+                <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-red-600  hover:text-green-400">About Us</a>
               </div>
 
               <div class="ml-3 relative">
@@ -72,7 +72,7 @@
                         </button>
                       @else
                         <span class="inline-flex rounded-md">
-                          <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                          <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-orange-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                             {{ Auth::user()->name }}
                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -117,16 +117,15 @@
             </nav>
           </div>
           <!-- Main Hero Content -->
-          <div
-            class="container max-w-lg px-4 py-32 mx-auto text-left bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
-            style="background-image: url('https://cdn.pixabay.com/photo/2016/11/18/14/39/beans-1834984_960_720.jpg')">
+         <div
+            class="container max-w-lg px-4 py-32 mx-auto text-left  bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
+            style="background-image: url('{{ asset('6b652625-da54-452b-ac13-3149ad94f0ed.jpg') }}')">
             <h1
-              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-center sm:leading-none lg:text-5xl">
+              class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 md:text-center sm:leading-none lg:text-5xl">
               <span class="inline md:block">Welcome To FlavorFiesta Recipes</span>
             </h1>
-            <div class="mx-auto mt-2 text-green-50 md:text-center lg:text-lg">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta voluptatem ab necessitatibus illo praesentium
-              culpa excepturi quae commodi quaerat,
+            <div class="mx-auto mt-2  text-white md:text-center lg:text-lg">
+              Want to eat something new but dont know what to eat? Well you are in the right place. Just suggest a name or search from some of our recommended recipes.
             </div>
             </div>
           </div>
@@ -141,16 +140,16 @@
                   > -->
                     <h3 class="text-xl">OUR STORY
                     </h3>
-                    <h2 class="text-4xl text-green-600">Welcome</h2>
+                    <h2 class="text-4xl text-orange-600">Welcome</h2>
                     <!-- </h1> -->
                     <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nemo incidunt praesentium, ipsum
-                      culpa minus eveniet, id nesciunt excepturi sit voluptate repudiandae. Explicabo, incidunt quia.
-                      Repellendus mollitia quaerat est voluptas!
+                      We are a group of 3 friends who are given the semester project by our respected
+                      Sir Dr Wasif Nisar. This is a recipe website through which user can view different recipes while scrolling through different categories
+                      and they can also add recipes of their own choice.
                     </p>
                     <div class="relative flex">
                       <a href="#_"
-                        class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
+                        class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-orange-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
                         Read More
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none"
                           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -163,7 +162,7 @@
                 </div>
                 <div class="w-full md:w-1/2">
                   <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
-                    <img src="https://cdn.pixabay.com/photo/2017/08/03/13/30/people-2576336_960_720.jpg" />
+                    <img src="https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=600" />
                   </div>
                 </div>
               </div>
@@ -179,12 +178,10 @@
                   <div class="w-full lg:max-w-md">
                     <h2 id="about-us" class="mb-4 text-2xl font-bold">About Us</h2></a>
                     <h2
-                      class="mb-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+                      class="mb-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-red-600">
                       WHY CHOOSE US?</h2>
       
-                    <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">Lorem ipsum dolor sit amet consectetur
-                      adipisicing elit. Natus hic atque magni minus aliquam, eos quam incidunt nam iusto sunt voluptates
-                      inventore a veritatis doloremque corrupti. Veritatis est expedita cupiditate!</p>
+                    <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">Felling hungry and dont know what to cook? Well you are in the right place. Just suggest a name or search from some of our recommended recipes.</p>
                     <ul>
                       <li class="flex items-center py-2 space-x-4 xl:py-3">
                         <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -193,7 +190,7 @@
                             d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
                           </path>
                         </svg>
-                        <span class="font-medium text-gray-500">Faster Processing and Delivery</span>
+                        <span class="font-medium text-gray-500">Fast and easy to make</span>
                       </li>
                       <li class="flex items-center py-2 space-x-4 xl:py-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-500" fill="none" viewBox="0 0 24 24"
@@ -201,7 +198,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span class="font-medium text-gray-500">Easy Payments</span>
+                        <span class="font-medium text-gray-500">Easy on the pocket</span>
                       </li>
                       <li class="flex items-center py-2 space-x-4 xl:py-3">
                         <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -210,7 +207,7 @@
                             d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                           </path>
                         </svg>
-                        <span class="font-medium text-gray-500">100% Protection and Security for Your App</span>
+                        <span class="font-medium text-gray-500">Recommemded by chefs around the world</span>
                       </li>
                     </ul>
                   </div>
@@ -224,9 +221,11 @@
           
           <section class="pt-4 pb-12 bg-gray-50">
             <div class="my-8 text-center">
-              <h2 id="gallery" class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-                Food Gallery</h2>
-              <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. soluta sapient</p>
+              <h2 id="gallery" class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 ">
+                Food Gallery
+              </h2>
+              <div><br><br></div>
+              <p class="text-xl">Some of our hot recipes</p>
             </div>
             <div class="container grid gap-4 mx-auto lg:grid-cols-3">
               <div class="w-full rounded">
@@ -254,52 +253,46 @@
             <div class="my-16 text-center">
               <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                 Testimonial </h2>
-              <p class="text-xl text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. soluta sapient</p>
+              <p class="text-xl text-white">Reviews are the best judges of a place</p>
             </div>
             <div class="grid gap-2 lg:grid-cols-3">
               <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
                 <div class="flex justify-center -mt-16 md:justify-end">
-                  <img class="object-cover w-20 h-20 border-2 border-green-500 rounded-full"
-                    src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80">
+                  <img class="object-cover w-20 h-20 border-2 border-orange-500 rounded-full"
+                    src="https://images.pexels.com/photos/938639/pexels-photo-938639.jpeg?auto=compress&cs=tinysrgb&w=600">
                 </div>
                 <div>
-                  <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-                  <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-                    ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-                    minus consequuntur!</p>
+                  <h2 class="text-3xl font-semibold text-gray-800">Unique Recipes</h2>
+                  <p class="mt-2 text-gray-600">First time searched a recipe at this website. I was stunned by the variety of unique recipes they have. </p>
                 </div>
                 <div class="flex justify-end mt-4">
-                  <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+                  <a class="text-xl font-medium text-orange-500">Shakeel Mushtaq</a>
                 </div>
               </div>
               <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
                 <div class="flex justify-center -mt-16 md:justify-end">
-                  <img class="object-cover w-20 h-20 border-2 border-green-500 rounded-full"
-                    src="https://cdn.pixabay.com/photo/2018/01/04/21/15/young-3061652__340.jpg">
+                  <img class="object-cover w-20 h-20 border-2 border-orange-500 rounded-full"
+                    src="https://images.pexels.com/photos/3263992/pexels-photo-3263992.jpeg?auto=compress&cs=tinysrgb&w=600">
                 </div>
                 <div>
-                  <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-                  <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-                    ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-                    minus consequuntur!</p>
+                  <h2 class="text-3xl font-semibold text-gray-800">Adding Recipe</h2>
+                  <p class="mt-2 text-gray-600">Apart from built in recipes, they provide a feasture for adding your own recipes which makes this website different from others.</p>
                 </div>
                 <div class="flex justify-end mt-4">
-                  <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+                  <a href="#" class="text-xl font-medium text-orange-500">Alina Qandeel</a>
                 </div>
               </div>
               <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
                 <div class="flex justify-center -mt-16 md:justify-end">
-                  <img class="object-cover w-20 h-20 border-2 border-green-500 rounded-full"
-                    src="https://cdn.pixabay.com/photo/2018/01/18/17/48/purchase-3090818__340.jpg">
+                  <img class="object-cover w-20 h-20 border-2 border-orange-500 rounded-full"
+                    src="https://images.pexels.com/photos/4307884/pexels-photo-4307884.jpeg?auto=compress&cs=tinysrgb&w=600">
                 </div>
                 <div>
-                  <h2 class="text-3xl font-semibold text-gray-800">Food</h2>
-                  <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-                    ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-                    minus consequuntur!</p>
+                  <h2 class="text-3xl font-semibold text-gray-800">Different Categories</h2>
+                  <p class="mt-2 text-gray-600">They have different categories which makes it easier to search for different recipes and skim through all of the wanted ones.</p>
                 </div>
                 <div class="flex justify-end mt-4">
-                  <a href="#" class="text-xl font-medium text-green-500">John Doe</a>
+                  <a  class="text-xl font-medium text-orange-500">CoolBoy TinTin </a>
                 </div>
               </div>
             </div>
@@ -307,24 +300,24 @@
       
          
         
-          <footer class="bg-gray-800 border-t border-gray-200">
+          <footer class="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 mt-auto" >
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">
                 <ul class="flex items-center space-x-4 text-white">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                  <li>Terms</li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Home</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> About</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Contact</a> </li>
+                  <li style="border-bottom: 1px solid white "> <a href="#"> Terms</a> </li>
                 </ul>
               </div>
               <div class="flex justify-center mt-4 lg:mt-0">
-                <a>
+                <a target=onblock href="https://www.facebook.com/">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-600" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://twitter.com/" class="ml-3">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-blue-300" viewBox="0 0 24 24">
                     <path
@@ -332,14 +325,14 @@
                     </path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.instagram.com/" class="ml-3">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     class="w-6 h-6 text-pink-400" viewBox="0 0 24 24">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                   </svg>
                 </a>
-                <a class="ml-3">
+                <a target=onblock href="https://www.linkedin.com/" class="ml-3">
                   <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="0" class="w-6 h-6 text-blue-500" viewBox="0 0 24 24">
                     <path stroke="none"

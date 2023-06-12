@@ -21,7 +21,7 @@ class FrontendController extends Controller
         $query->where('title', 'like', '%'.$searchTerm.'%');
     }
 
-    $recipes = $query->paginate(5);
+    $recipes = $query->paginate(30);
 
         return view('welcome',compact('recipes','categories'));
     }
