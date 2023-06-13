@@ -234,6 +234,17 @@
   </div>
       {{-- main content --}}          
       
+@can('admin')
+<div class="flex justify-end">
+  <a href="{{route('recipeedit',['id'=>$recipe->id])}}" class="mr-2">
+    <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+  </a>
+  <a href="{{route('recipedelete',['id'=>$recipe->id])}}">
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+  </a>
+</div>
+@endcan
+
      <div class="container mx-auto px-4 py-8 text-center">
   <div class="flex justify-center mb-8">
     <h1 class="text-4xl font-bold text-orange-500">

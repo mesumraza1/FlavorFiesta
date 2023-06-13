@@ -13,7 +13,7 @@
         <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center " x-data="{ open: false }" wire:id="oYMiPnZp4Nzbmr9iAsGp">
             
           <div class="flex items-center justify-between">
-            <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 md:text-2xl hover:text-green-400"
+            <a class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r  from-red-600 via-yellow-400 to-red-600 md:text-2xl hover:text-green-400"
               href="#">
               FlavorFiesta
             </a>
@@ -34,13 +34,13 @@
           
           <div :class="isOpen ? 'flex' : 'hidden'" class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 justify-center">
               
-              <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400" href="#">Home</a>
+              <a  href="{{ Auth::check() ? route('dashboard.index') : route('welcome.index') }}"class="text-transparent bg-clip-text bg-gradient-to-r  from-red-600 via-yellow-400 to-red-600 hover:text-green-400" href="#">Home</a>
               
               
               @can('admin')
-              <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">Admin</a>
+              <a href="{{route('userview')}}" class="text-transparent bg-clip-text bg-gradient-to-r  from-red-600 via-yellow-400 to-red-600 hover:text-green-400">Admin</a>
               @endcan
-              <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">About Us</a>
+              <a href="{{ route('aboutus.index') }}" class="text-transparent bg-clip-text bg-gradient-to-r  from-red-600 via-yellow-400 to-red-600 hover:text-green-400">About Us</a>
           </div>
   
           <div class="ml-3 relative">

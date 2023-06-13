@@ -188,7 +188,7 @@ class RecipesController extends Controller
         });
         $recipe->ingredients()->sync($ingredients);
         
-        return redirect()->route('recipeview')->with('success', 'Recipe updated successfully.');
+        return redirect()->back()->with('success', 'Recipe updated successfully.');
     }
 
     /**
@@ -217,23 +217,7 @@ class RecipesController extends Controller
 
     }
 
-    // public function index(){
-    //     $url=url('/register');
-    //     $customer=new customer;
-    //     $title="Registration";
-    //     $data=compact('url','title','customer');
-    //     return view('form')->with($data);
-    // }
-    // public function register(Request $request){
-
-    //     $customer = new Customer;
-    //     $customer->Username=$request['name'];
-    //     $customer->Email=$request['email'];
-    //     $customer->password=md5($request['password']);
-    //     $customer->save();
-    //     return redirect('/customer/view');
-
-    // }
+   
     public function table(){
 
         if(Gate::denies('admin')){
